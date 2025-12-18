@@ -1,0 +1,43 @@
+﻿@model Danciu_Radu_Lab4_BAMI.DurationPredictionModel.ModelInput
+
+@{
+    ViewData["Title"] = "Duration Prediction Using ML.NET";
+}
+
+<h2>Duration Prediction using ML.NET</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Time" method="post">
+            <div class="form-group">
+                <label asp-for="Passenger_count"></label>
+                <input asp-for="Passenger_count" type="number" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Trip_distance"></label>
+                <input asp-for="Trip_distance" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Payment_type"></label>
+                <select asp-for="Payment_type" class="form-control">
+                    <option value="CSH">Cash</option>
+                    <option value="CRD">Credit</option>
+                </select>
+            </div>
+
+            <br />
+            <input type="submit" value="Check Duration" class="btn btn-primary" />
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        @if (ViewBag.Time != null)
+        {
+            <p><b>Estimated time (seconds):</b> @ViewBag.Time</p>
+            <p><b>Estimated time (minutes):</b> @ViewBag.TimeMinutes</p>
+        }
+    </div>
+</div>
