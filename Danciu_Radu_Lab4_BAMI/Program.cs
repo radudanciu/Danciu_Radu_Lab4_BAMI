@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Danciu_Radu_Lab4_BAMI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
